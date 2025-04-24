@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h> // getch()
+#include <conio.h> // For getch()
 
 void cleanScreen(){ // Clean screen
     system("cls"); 
@@ -29,11 +29,10 @@ void multiplicationTable(){ //Multiplication table generator
     }
 }
 
-void drawTriangle(char ch){ // Triangle drawwing function
-    int rows=ch-'a'+1;
-    for(int i=1; i<=rows; i++){
-        for(int j=1; j<=rows; j++){
-            printf("*");
+void drawTriangle(char ch){ // Triangle drawing function
+    for(int i=ch; i>='a'; i--){
+        for(int j=i; j<=ch; j++){
+            printf("%c", j);
         }
         printf("\n");
     }
@@ -44,7 +43,8 @@ void triangleOption() { // Replacing the star symbol with the letter user type i
     cleanScreen();
     while (1) {
         printf("Enter character between a and n:");
-        scanf(" %c", &ch);
+        while (getchar() != '\n'); // Clean the buffer 
+        scanf("%c", &ch);
 
         if (ch>='a'&&ch<='n') {
             drawTriangle(ch);
@@ -53,7 +53,8 @@ void triangleOption() { // Replacing the star symbol with the letter user type i
             cleanScreen();
             return;
         } else {
-            printf("Warning: Enter again:\n");
+            printf("Warning: Enter again\n");
+            fflush(stdin); // Clean the buffer 
         }
     }
 }
@@ -75,7 +76,7 @@ int confirmContinue() { // Comfirming exiting the program
     }
 }
 
-int main()
+int main() // Main body
 {
     int password, i=0;
     char input;
@@ -113,7 +114,7 @@ int main()
         }
     }
 
-    while (1)
+    while (1) // Main body
         {
             system("cls"); // Cleaning screen
             printf("------------------------------\n");
@@ -146,4 +147,9 @@ int main()
         }
         return  0;
 }
-    
+// 這次程式設計與上次比難度加深很多, 這次我使用了函數功能來呈現程式的功能因為我沒辦法用do-while呈現
+// 我一開始使用了作業一的程式當作基底, 但是發現因為這次程式有三種不同的功能且需要跳回主選單, 我決定
+// 重新設計並刪除大部分作業一的程式碼並以switch-case與函數取代. 在設計函數的時候我參考了講義內的範
+// 例, 使我在函數設計上並沒有遇到太多的困難, 但是在修改函數的時候因為不熟悉花費了一個晚上再做細部調
+// 整以符合教授要求, 讓我了解到在程式的世界裡對程式的了解是作為程式工作者最關鍵的一點, 我還需要多練
+// 習來讓自己對C語言更了解.
