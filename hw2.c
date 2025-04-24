@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <conio.h> // getch()
 
-void cleanscreen(){
-    system("cls"); // Clean screen
+void cleanScreen(){ // Clean screen
+    system("cls"); 
 }
 
-void multiplicationTable(){
+void multiplicationTable(){ //Multiplication table generator
     int n;
-    cleanscreen();
+    cleanScreen();
     while(1){
         printf("Enter a number:");
         scanf("%d",  &n);
@@ -21,7 +21,7 @@ void multiplicationTable(){
             }
             printf("\nEnter a key to back to main menu");
             getch();
-            cleanscreen();
+            cleanScreen();
             return;
         } else{
             printf("Warning: Enter again:\n");
@@ -29,7 +29,7 @@ void multiplicationTable(){
     }
 }
 
-void Drawtriangle(char ch){
+void drawTriangle(char ch){ // Triangle drawwing funtion
     int rows=ch-'a'+1;
     for(int i=1; i<=rows; i++){
         for(int j=1; j<=rows; j++){
@@ -39,9 +39,9 @@ void Drawtriangle(char ch){
     }
 }
 
-void triangleOption() {
+void triangleOption() { // Replacing the star symbol with the letter user type in
     char ch;
-    clearScreen();
+    cleanScreen();
     while (1) {
         printf("Enter character between a and n:");
         scanf(" %c", &ch);
@@ -50,7 +50,7 @@ void triangleOption() {
             drawTriangle(ch);
             printf("\nEnter a key to back to main menu\n");
             getch();
-            clearScreen();
+            cleanScreen();
             return;
         } else {
             printf("Warning: Enter again:\n");
@@ -58,13 +58,13 @@ void triangleOption() {
     }
 }
 
-int confirmContinue() {
+int confirmContinue() { // Comfirming exiting the program
     char choice;
     while (1) {
         printf("Continue? (y/n): ");
         scanf(" %c", &choice);
         if (choice == 'y' || choice == 'Y') {
-            clearScreen();
+            cleanScreen();
             return 1;
         } else if (choice == 'n' || choice == 'N') {
             printf("Ending...\n");
@@ -124,10 +124,10 @@ int main()
             getchar(); // waiting for user to type anything
             scanf("%c", &input);
 
-            switch(input){
+            switch(input){ // Deciding with funtion we are using
                 case 'a':
                 case 'A':
-                    traingleOption();
+                    triangleOption();
                     break;
                 case 'b':
                 case 'B':
