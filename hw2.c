@@ -11,11 +11,11 @@ void multiplicationTable(){ //Multiplication table generator
     cleanScreen();
     while(1){
         printf("Enter a number:");
-        scanf("%d",  &n);
+        scanf("%d", &n);
         if(n>=1&&n<=9){
             for(int i=1; i<=n; i++){
-                for(int j=i; j<=n; j++){
-                    printf("%d*%d=%2d", i, j, i*j);
+                for(int j=1; j<=n; j++){
+                    printf("%d*%d=%2d ",i,j,i*j);
                 }
                 printf("\n");
             }
@@ -29,7 +29,7 @@ void multiplicationTable(){ //Multiplication table generator
     }
 }
 
-void drawTriangle(char ch){ // Triangle drawwing funtion
+void drawTriangle(char ch){ // Triangle drawwing function
     int rows=ch-'a'+1;
     for(int i=1; i<=rows; i++){
         for(int j=1; j<=rows; j++){
