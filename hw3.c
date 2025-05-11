@@ -1,63 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h> // For getch()
+#include <time.h>
+#include <string.h>
+
+#define SIZE 9
+#define MAX_RESERVED 10 
+
+char seats[SIZE][SIZE];
+char tempSeats[SIZE][SIZE];
 
 void cleanScreen(){ // Clean screen
     system("cls"); 
 }
 
-void multiplicationTable(){ //Multiplication table generator
-    int n;
-    cleanScreen();
-    while(1){
-        printf("Enter a number:");
-        scanf("%d", &n);
-        if(n>=1&&n<=9){
-            for(int i=1; i<=n; i++){
-                for(int j=1; j<=n; j++){
-                    printf("%d*%d=%2d ",i,j,i*j);
-                }
-                printf("\n");
-            }
-            printf("\nEnter a key to back to main menu");
-            getch();
-            cleanScreen();
-            return;
-        } else{
-            printf("Warning: Enter again:\n");
+void iniseats(){
+    for(int i=0; i<SIZE; i++)
+       for(int j=0; SIZE; j++)
+          seats[i][j]='-';
+
+    int count=0;
+    while(count<MAX_RESERVED){
+        int row=rand()%SIZE;
+        int col=rand()%SIZE;
+        if(seats[row][col]!='*'){
+            seats[row][col]='*';
+            count++;
         }
     }
 }
 
-void drawTriangle(char ch){ // Triangle drawing function
-    for(int i=ch; i>='a'; i--){
-        for(int j=i; j<=ch; j++){
-            printf("%c", j);
+void showseats(){
+    printf("\\123456789\n");
+    for(int i=SIZE-1; i>=0; i--){
+        printf("%d", i+1);
+        for(int j=0; j<SIZE; j++){
+            printf("%c", seats[i][j]);
         }
         printf("\n");
     }
-}
-
-void triangleOption() { // Replacing the star symbol with the letter user type in
-    char ch;
+    printf("\nPress any key to return to main menu");
+    getch();
     cleanScreen();
-    while (1) {
-        printf("Enter character between a and n:");
-        while (getchar() != '\n'); // Clean the buffer 
-        scanf("%c", &ch);
-
-        if (ch>='a'&&ch<='n') {
-            drawTriangle(ch);
-            printf("\nEnter a key to back to main menu\n");
-            getch();
-            cleanScreen();
-            return;
-        } else {
-            printf("Warning: Enter again\n");
-            fflush(stdin); // Clean the buffer 
-        }
-    }
 }
+
 
 int confirmContinue() { // Comfirming exiting the program
     char choice;
@@ -130,13 +116,12 @@ int main() // Main body
 
             switch(input){ // Deciding with funtion we are using
                 case 'a':
-                    available();
+                    showseats();
+                    iniseats();
                     break;
                 case 'b':
-                    arrange();
                     break;
                 case 'c':
-                    choose();
                     break;
                 case 'd':
                     if (!confirmContinue()){
