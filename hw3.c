@@ -91,6 +91,7 @@ void autoSeats() {
                     tempSeats[i + 1][j] == '-' && tempSeats[i + 1][j + 1] == '-') {
                     tempSeats[i][j] = tempSeats[i][j + 1] = '@';
                     tempSeats[i + 1][j] = tempSeats[i + 1][j + 1] = '@';
+                    found = 1;
                     break;
                 }
             }
@@ -108,14 +109,52 @@ void autoSeats() {
     scanf(" %c", &ch);
     if (ch == 'y' || ch == 'Y') {
         for (int i = 0; i < SIZE; i++) 
-            for (int j = 0; j < SIZE; j++)
-                if (tempSeats[i][j] == '@')
+            for (int j = 0; j < SIZE; j++) 
+                if (tempSeats[i][j] == '@') 
                     seats[i][j] = '*';
-        system("cls");
-    } else {
-        printf("Back to main menu\n");
-    }
+    } 
+    printf("Back to main menu\n");
+    system("cls");
 }
+
+// Manual seats
+void manualSeats() {
+    int n;
+    printf("How many seats do you need? (1~4)");
+    scanf("%d", &n);
+    if (n < 1 || n > 4) {
+        printf("Error, please enter again");
+        return;
+    }
+
+    memcpy(tempSeats, seats, sizeof(seats));
+    int c, r;
+    for  (int i = 0;  i < n; i++) {
+        printf("Row for the %d seats: ", i + 1);
+        getch();
+        scanf("%d", &r);
+        printf("Column for the %d seats: ", i + 1);
+        getch();
+        scanf("%d", &c);
+        if (r < 1 || r > 9 || c < 1 || c > 9 || tempSeats[r - 1][c - 1] != '-') {
+            printf("The seat you choose is already reserved\n");
+            i--;
+        } else {
+            tempSeats[r - 1][c - 1] = '@';
+        }
+    }
+
+    showTempSeats();
+    printf("\nPlease confirm\n");
+    getch();
+
+    for (int i = 0; i < SIZE; i++) 
+        for (int j = 0; j < SIZE; j++) 
+            if (tempSeats[i][j] == '@') 
+                seats[i][j] = '*';
+    system("cls");            
+}
+
 // Checking the  password to see if it's correct
 int passwordCheck() {
     int input, attempt = 0;
@@ -200,6 +239,7 @@ int main() // Main body
                 autoSeats();
                 break;
             case 'c':
+                manualSeats();
                 break;
             case 'd':
                 if (!confirmContinue()){
