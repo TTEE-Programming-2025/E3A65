@@ -253,3 +253,9 @@ int main() // Main body
 
     return  0;
 }
+
+// This project is way harder tha the last one, array is actually not that conplicated but getting them working properly is difficult. 
+// The real challenge in this one is the b function that when the user is asking for 4 seats we have to make those seats connect to each 
+// others, which took the majority of the time I spent on this project, and that made me relised that I still have to work on my
+// coding logic. Overall, I've learn so much from this project and I believe this project is going to help me for the upcoming 
+// chanlleges and studies. 
