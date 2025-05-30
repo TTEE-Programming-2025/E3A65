@@ -22,6 +22,59 @@ int confirmContinue() {
     }
 }
 
+// Student data structure
+struct student {
+    char name[50];
+    int id;
+    int math;
+    int physics;
+    int english;
+    float average;
+};
+
+struct Student student[MAX];
+int studentCount = 0;
+
+// Login function
+int login() {
+    int pwd, attempts = 0;
+    const int correctPwd = 2025;
+
+    while (attempts < 3) {
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@\n");
+        printf("@@@@@@@@  @@@@@@@@@@@@@@        @@@@@\n");
+        printf("@@@@@@          @@@@@          @@@@@@\n");
+        printf("@@@@@     @@@@@@@@@@@           @@@@@\n");
+        printf("@@@@@@ @@@ @@@@@@@@@@@@@@@  @@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@          @@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        printf("Enter the 4-digit password: ");
+        scanf("%d", &pwd);
+        if (pwd == correctPwd) {
+            printf("Welcoem!\n");
+            return 1;
+        } else {
+            printf("Wrong passwoed!\n");
+            attempts++;
+        }
+    }
+    printf("Attempt failed...system ending...\n");
+    return 0;
+}
+
 int main()
 {
     if(!login()) return 0;
