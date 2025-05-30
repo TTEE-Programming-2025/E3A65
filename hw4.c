@@ -174,7 +174,7 @@ void searchGrade() {
 void rankGrade() {
     system("clear");
     struct Student temp;
-    for(int i = 0; i < studentCount - 1, i++) {
+    for(int i = 0; i < studentCount - 1; i++) {
         for(int j = i + 1; j < studentCount; j++) {
             if (students[i].average < students[j].average) {
                 temp = students[i];
