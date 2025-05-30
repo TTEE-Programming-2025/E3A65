@@ -23,7 +23,7 @@ int confirmContinue() {
 }
 
 // Student data structure
-struct student {
+struct Student {
     char name[50];
     int id;
     int math;
@@ -32,7 +32,7 @@ struct student {
     float average;
 };
 
-struct Student student[MAX];
+struct Student students[MAX];
 int studentCount = 0;
 
 // Login function
@@ -84,6 +84,70 @@ void showMenu() {
         printf("| e. : Exit                  |\n");
         printf("------------------------------\n");    
 }
+
+// Grade entering system
+void enterGrades() { 
+    int n;
+    system("clear");
+    printf("Enter the number of studnets(5~10): ");
+    scanf("%d", &n);
+    if (n < 5 || n > 10) {
+        printf("Too much/less of the student.\n");
+        return;
+    }
+    studentCount = 0;
+    for (int i = 0; i < n; i++){
+        printf("Name of the %d student: ", i + 1);
+        scanf("%s", students[i].name);
+
+        printf("Enter ID(Six-digit number): ");
+        scanf("%s", &students[i].id);
+        if(students[i].id < 100000 || students[i].id >  999999) {
+            printf("Wrong format of student ID. ");
+            i--;
+            continue;
+        }
+
+        printf("Enter Math grade(0~100): ") ;
+        scanf("%d", &students[i].math);
+        if (students[i].math < 0 || students[i].math > 100) {
+            printf("Wrong format of grade.");
+            i--;
+            continue;
+        }
+
+        printf("Enter Physics grade(0~100): ") ;
+        scanf("%d", &students[i].physics);
+        if (students[i].physics < 0 || students[i].physics > 100) {
+            printf("Wrong format of grade.");
+            i--;
+            continue;
+        }
+
+        printf("Enter English grade(0~100): ") ;
+        scanf("%d", &students[i].english);
+        if (students[i].english < 0 || students[i].english > 100) {
+            printf("Wrong format of grade.");
+            i--;
+            continue;
+        }
+
+        students[i].average = (students[i].math + students[i].physics + students[i].english) / 3.0f;
+    }
+}
+
+// Grade displaying function
+void displayGrades() {
+    system("cls");
+    printf("Name\tID\tMath\tPhysics\tEnglish\tAverage\n");
+    for (int i = 0; i < studentCount; i++) {
+        printf("%s\t%d\t%d\t%d\t%d\t%.1f\n",
+        students[i].name, students[i].id, students[i].math, students[i].physics, students[i].english, students[i].average);
+    }
+    getchar(); getchar(); // waiting for input
+}
+
+
 
 int main()
 {
