@@ -225,3 +225,7 @@ int main()
     }
     return 0;
 }
+
+// Final project of the semester, this one is trickly with the combinations of array and structure, makes it way more difficult than the last one,
+// but thru out the studying and hard work I am still able to finsih it. I've learnt a lot from making these projects, definitely gave me some  
+// experiences for programming in general, and I believe these expereience it's going to help me a lot in the future!  
