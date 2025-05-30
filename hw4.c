@@ -138,7 +138,7 @@ void enterGrades() {
 
 // Grade displaying function
 void displayGrades() {
-    system("cls");
+    system("clear");
     printf("Name\tID\tMath\tPhysics\tEnglish\tAverage\n");
     for (int i = 0; i < studentCount; i++) {
         printf("%s\t%d\t%d\t%d\t%d\t%.1f\n",
@@ -147,8 +147,50 @@ void displayGrades() {
     getchar(); getchar(); // waiting for input
 }
 
+// Grade searching function
+void searchGrade() {
+    char target[50];
+    int found  = 0;
+    system("clear");
+    printf("Who's grade do you want to look up?: ");
+    scanf("%s", target);
+    for (int i = 0; i < studentCount; i++) {
+        if (strcmp(students[i].name, target) == 0) {
+            printf("Found it!!\n");
+            printf("Name: %s\tId: \n",  students[i].name, students[i].id);
+            printf("Math: %d\tPhysics: %d\tEnglish: %d\n", students[i].math, students[i].physics, students[i].english);
+            printf("Average: %1.f\n",  students[i].average);
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("This student does not exist in the system!\n");
+    }
+    getchar(); getchar();
+} 
 
+// Ranking system
+void rankGrade() {
+    system("clear");
+    struct Student temp;
+    for(int i = 0; i < studentCount - 1, i++) {
+        for(int j = i + 1; j < studentCount; j++) {
+            if (students[i].average < students[j].average) {
+                temp = students[i];
+                students[i] = students[j];
+                students[j] = temp;
+            }
+        }
+    } 
+    printf("Name\tID\tAverage\n");
+    for (int i = 0; i < studentCount; i++) {
+        printf("%s\t%d\t%1.f\n", students[i].name, students[i].id, students[i].average);
+    }
+    getchar(); getchar();
+}
 
+// Main body
 int main()
 {
     if(!login()) return 0;
