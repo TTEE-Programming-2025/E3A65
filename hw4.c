@@ -75,6 +75,16 @@ int login() {
     return 0;
 }
 
+void showMenu() {
+        printf("-------[Grading system]-------\n"); 
+        printf("| a. : Enter grades          |\n");
+        printf("| b. : Display grades        |\n");
+        printf("| c. : Search grades         |\n");
+        printf("| d. : Ranking grades        |\n");
+        printf("| e. : Exit                  |\n");
+        printf("------------------------------\n");    
+}
+
 int main()
 {
     if(!login()) return 0;
